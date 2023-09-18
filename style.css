@@ -1,0 +1,24 @@
+body {
+    /* Add gradient */
+    background: linear-gradient(red, yellow) fixed;
+}
+
+#dices {
+    /* child divs should be inline using grid */
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    /* Add some space around the dices */
+    padding: 1rem;
+    /* Add some space between the dices */
+    gap: 1rem;
+}
+
+
+
+#display {
+    padding-inline: 1rem;
+    border: 1px solid #858484;
+    /* Only take up as much space as needed */
+    display: inline-block;
+    /* Add some space around the display */
+}
