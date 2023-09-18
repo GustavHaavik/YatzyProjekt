@@ -4,7 +4,6 @@ body {
     display: grid;
     /* only take up as much space as needed horizontally */
     grid-template-columns: min-content;
-
 }
 
 #display {

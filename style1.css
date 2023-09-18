@@ -1,27 +1,13 @@
-/* add a grid around the score-pane */
-#score-pane,
-#score-pane2 {
+#score-pane {
     display: grid;
-    grid-template-columns: auto auto;
-    gap: 1rem;
-    border: 1rem;    
+    grid-template-columns: 2fr 1fr 3fr;
+    border: 1px solid black;
+    /* Add some space around the dices */
+    padding: 1rem;
 }
 
-/* Style the score divs */
-.score {
-    display: flex;
-    align-items: center;
+.result {
+    background-color: white;
+    border: 1px solid black;
+    padding-inline: 1rem;
 }
-
-/* Style the paragraphs within the div */
-.score p {
-    margin: 0;
-    flex: 1;
-}
-
-/* Style the input elements within the div */
-.score input {
-    flex: 1;
-    margin-left: 10px;
-}
-
