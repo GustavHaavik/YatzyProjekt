@@ -18,12 +18,18 @@ body {
     padding: 1rem;
 }
 
-#dices {
+.dice {
+    border: 1px solid black;
+    /* Add some space around the dices */
+    padding: 1rem;
+}
+
+#dice-container {
     display: grid;
     /* child divs should be inline using grid */
     grid-template-columns: repeat(5, 1fr);
     /* Add some space between the dices */
-    gap: 3rem;
+    gap: 2rem;
     margin-bottom: 2rem;
 }
 
@@ -34,9 +40,9 @@ body {
     /* take up as much space */
     width: 100%;
     /* align top */
-    align-items: start;
     justify-content: start;
-    border: 1px solid black;
+    /* TODO Delete */
+    border: 1px solid black; 
 }
 
 #results {
