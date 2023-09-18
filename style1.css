@@ -1,0 +1,8 @@
+
+/* add a grid around the score */
+#score-pane {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border: 1rem;    
+}
+
