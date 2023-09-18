@@ -1,13 +1,22 @@
 #score-pane {
     display: grid;
-    grid-template-columns: 2fr 1fr 3fr;
+    grid-template-columns: 1fr 1fr;
     border: 1px solid black;
     /* Add some space around the dices */
-    padding: 1rem;
+    padding-inline: 1rem;
+    margin-top: 1rem;
+}
+
+.score {
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
 }
 
 .result {
     background-color: white;
     border: 1px solid black;
-    padding-inline: 1rem;
+    padding: 0px 4px 0px 15px;
 }
