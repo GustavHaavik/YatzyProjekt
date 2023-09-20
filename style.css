@@ -1,53 +1,107 @@
+/* Reset some default styles */
 body {
-    /* Add gradient */
-    /*background: linear-gradient(red, yellow) fixed;*/
-    display: grid;
-    /* only take up as much space as needed horizontally */
-    grid-template-columns: min-content;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
 }
 
-#display {
-    grid-template-areas: 
-        "dice dice dice dice dice"
-        "turns roll";
+section {
+    padding: 20px;
+}
 
-    /* Border */
-    border: 1px solid black;
-    /* Add some space around the dices */
-    padding: 1rem;
+/* Header styles */
+header {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Display styles */
+
+#dice-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .dice {
-    border: 1px solid black;
-    /* Add some space around the dices */
-    padding: 1rem;
-}
-
-#dice-container {
-    display: grid;
-    /* child divs should be inline using grid */
-    grid-template-columns: repeat(5, 1fr);
-    /* Add some space between the dices */
-    gap: 2rem;
-    margin-bottom: 2rem;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
 }
 
 #reroll {
-    /* child divs should be inline using grid */
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* take up as much space */
-    width: 100%;
-    /* align top */
-    justify-content: start;
-    /* TODO Delete */
-    border: 1px solid black; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-#results {
-    /* child divs should be inline using grid */
-    grid-template-columns: "1fr 1fr";
-    /* take up as much space */
-    width: 100%;
-    justify-content: start;
+/* Add some spacing between the elements */
+#reroll p,
+#rollDice {
+    margin-right: 10px;
+}
+
+#rollDice {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.score-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+/* Score header styles */
+.score-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.score1 {
+    padding-inline: 2rem;
+}
+
+#score-pane {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 8px;
+    justify-content: center;
+    margin-top: 10px;
+    max-width: max-content;
+}
+
+.score-group {
+    grid-column-start: span 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* .score should have white background and rounded borders  */
+.score {
+    display: flex;
+    justify-content: space-between;
+
+    background-color: #fff;
+    border: #333 1px solid;
+    border-radius: 5px;
+    padding: 5px 20px;
+    margin: 5px;
+}
+
+.result {
+    margin-left: 1rem;
+    font-weight: bold;
 }

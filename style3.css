@@ -1,0 +1,55 @@
+body {
+    /* Add gradient */
+    /*background: linear-gradient(red, yellow) fixed;*/
+    display: grid;
+    /* only take up as much space as needed horizontally */
+    grid-template-columns: min-content;
+}
+
+#display {
+    grid-template-areas:
+        "dice dice dice dice dice"
+        "turns roll";
+
+    /* Border */
+    border: 1px solid black;
+    /* Add some space around the dices */
+    padding: 1rem;
+}
+
+.dice {
+    border: 1px solid black;
+    /* Add some space around the dices */
+    width: 64px;
+    justify-content: center;
+    align-content: center;
+}
+
+#dice-container {
+    display: grid;
+    /* child divs should be inline using grid */
+    grid-template-columns: repeat(5, 1fr);
+    /* Add some space between the dices */
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+#reroll {
+    /* child divs should be inline using grid */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* take up as much space */
+    width: 100%;
+    /* align top */
+    justify-content: start;
+    /* TODO Delete */
+    border: 1px solid black;
+}
+
+#results {
+    /* child divs should be inline using grid */
+    grid-template-columns: "1fr 1fr";
+    /* take up as much space */
+    width: 100%;
+    justify-content: start;
+}
