@@ -10,15 +10,12 @@ section {
     padding: 20px;
 }
 
-/* Header styles */
 header {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 20px;
 }
-
-/* Display styles */
 
 #dice-container {
     display: flex;
@@ -39,7 +36,6 @@ header {
     justify-content: center;
 }
 
-/* Add some spacing between the elements */
 #reroll p,
 #rollDice {
     margin-right: 10px;
@@ -62,7 +58,6 @@ header {
     margin: auto;
 }
 
-/* Score header styles */
 .score-header {
     display: flex;
     justify-content: space-between;
@@ -89,13 +84,12 @@ header {
     justify-content: space-between;
 }
 
-/* .score should have white background and rounded borders  */
 .score {
     display: flex;
     justify-content: space-between;
 
     background-color: #fff;
-    border: #333 1px solid;
+    border: #ccc 1px solid;
     border-radius: 5px;
     padding: 5px 20px;
     margin: 5px;

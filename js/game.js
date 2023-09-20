@@ -18,15 +18,12 @@ export function resetThrowCounts() {
 }
 
 export function rollDice(holding) {
-    if (throwLeft === 0) {
-        return;
-    }
-
     for (let i = 0; i < 5; i++) {
         if (!holding[i]) {
             dice[i] = Math.floor(Math.random() * 6) + 1;
         }
     }
+
     throwLeft--;
 }
 
