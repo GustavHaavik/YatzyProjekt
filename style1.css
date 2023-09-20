@@ -8,6 +8,7 @@
 }
 
 .score {
+    grid-column: 1;
     display: flex;
     gap: 3rem;
     justify-content: space-between;
@@ -20,3 +21,13 @@
     border: 1px solid black;
     padding: 0px 4px 0px 15px;
 }
+
+.score1 {
+    grid-column: auto;
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+

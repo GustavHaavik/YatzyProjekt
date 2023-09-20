@@ -1,6 +1,6 @@
 body {
     /* Add gradient */
-    background: linear-gradient(red, yellow) fixed;
+    /*background: linear-gradient(red, yellow) fixed;*/
     display: grid;
     /* only take up as much space as needed horizontally */
     grid-template-columns: min-content;
