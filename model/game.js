@@ -1,4 +1,4 @@
-const dice = [];
+let dice = [];
 let throwAttempts = 0;
 
 export function getDice() {
@@ -179,7 +179,7 @@ function isStraight(start, end) {
 }
 
 
-function smallStraightPoints() {
+export function smallStraightPoints() {
     if (isStraight(0, 5)) {
         return 15;
     }

@@ -61,7 +61,6 @@ function updatePoints() {
 
 
 function reset() {
-    yatzy.reset();
     updateScore();
     updatePoints();
     turnsDisplay.textContent = yatzy.getAttempts();
@@ -87,6 +86,14 @@ function newTurn() {
 
     diceImages.forEach((diceImage) => {
         diceImage.classList.remove('hold');
+    });
+
+    scoreElements.forEach((resultElement) => {
+        if (resultElement.classList.contains('locked')) {
+            return;
+        }
+        const result = resultElement.querySelectorAll('.result');
+        result[0].textContent = '0';
     });
 }
 
