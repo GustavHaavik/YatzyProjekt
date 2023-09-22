@@ -50,7 +50,7 @@ function getHoldings() {
 function updatePoints() {
     const results = yatzy.getResults();
     for (let i = 0; i < scoreElements.length; i++) {
-        if(scoreElements[i].classList.contains('locked')) {
+        if (scoreElements[i].classList.contains('locked')) {
             continue;
         }
 
@@ -59,26 +59,57 @@ function updatePoints() {
     }
 }
 
+
+function reset() {
+    yatzy.reset();
+    updateScore();
+    updatePoints();
+    turnsDisplay.textContent = yatzy.getAttempts();
+    for (let i = 0; i < diceImages.length; i++) {
+        diceImages[i].src = `images/1.png`;
+    }
+}
+
+// Reset game
+function newGame() {
+    reset();
+    for (let i = 0; i < scoreElements.length; i++) {
+        scoreElements[i].classList.remove('locked');
+        const result = scoreElements[i].querySelectorAll('.result');
+        result[0].textContent = '';
+    }
+}
+
+function newTurn() {
+    yatzy.resetThrowCounts();
+    const attempts = yatzy.getAttempts();
+    turnsDisplay.textContent = attempts;
+
+    diceImages.forEach((diceImage) => {
+        diceImage.classList.remove('hold');
+    });
+
+    yatzy.
+}
+
 // Add a click event listener to each result element
 scoreElements.forEach((resultElement) => {
     resultElement.addEventListener('click', () => {
-        if(resultElement.id === 'sum' || resultElement.id === 'bonus' || resultElement.id === 'total') {
+        if (resultElement.id === 'sum' || resultElement.id === 'bonus' || resultElement.id === 'total') {
             return;
         }
-        
-        if(resultElement.classList.contains('locked')) {
+
+        if (resultElement.classList.contains('locked')) {
             return;
         }
 
         resultElement.classList.add('locked');
-        
 
         updateScore();
-        // Resets the throw count
-        yatzy.resetThrowCounts();
+
+        newTurn()
     });
 });
-
 
 // Event listener for rolling the dice
 rollDiceButton.addEventListener('click', roll);
