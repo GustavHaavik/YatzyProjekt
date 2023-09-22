@@ -78,7 +78,6 @@ export function getTotal() {
     return total;
 }
 
-
 function sameValuePoints(value) {
     const counts = calculateCounts();
     return counts[value - 1] * value;
@@ -162,7 +161,7 @@ function fullHousePoints() {
 
     let sum = 0;
     if (pair && threeOfAKind) {
-        for(let i = 0; i < counts.length; i++) {
+        for (let i = 0; i < counts.length; i++) {
             sum += (i + 1) * counts[i];
         }
     }
