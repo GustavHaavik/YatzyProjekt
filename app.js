@@ -59,26 +59,6 @@ function updatePoints() {
     }
 }
 
-
-function reset() {
-    updateScore();
-    updatePoints();
-    turnsDisplay.textContent = yatzy.getAttempts();
-    for (let i = 0; i < diceImages.length; i++) {
-        diceImages[i].src = `images/1.png`;
-    }
-}
-
-// Reset game
-function newGame() {
-    reset();
-    for (let i = 0; i < scoreElements.length; i++) {
-        scoreElements[i].classList.remove('locked');
-        const result = scoreElements[i].querySelectorAll('.result');
-        result[0].textContent = '';
-    }
-}
-
 function newTurn() {
     yatzy.resetThrowCounts();
     const attempts = yatzy.getAttempts();
@@ -110,8 +90,12 @@ scoreElements.forEach((resultElement) => {
 
         resultElement.classList.add('locked');
 
-        updateScore();
+        const result = resultElement.querySelectorAll('.result');
+        const score = result[0].textContent;
+        const scoreValue = parseInt(score);
+        yatzy.pushResult(scoreValue);
 
+        updateScore();
         newTurn()
     });
 });
@@ -123,6 +107,5 @@ rollDiceButton.addEventListener('click', roll);
 diceImages.forEach((diceImage) => {
     diceImage.addEventListener('click', () => {
         diceImage.classList.toggle('hold');
-        console.log(diceImage);
     });
 });

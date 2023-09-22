@@ -1,5 +1,11 @@
 let dice = [];
 let throwAttempts = 0;
+const MAX_ATTEMPTS = 3;
+const finalResults = [];
+
+export function pushResult(value) {
+    finalResults.push(value);
+}
 
 export function getDice() {
     return dice;
@@ -18,7 +24,7 @@ export function resetThrowCounts() {
 }
 
 export function rollDice(holding) {
-    if (throwAttempts === 3) {
+    if (throwAttempts === MAX_ATTEMPTS) {
         alert('You have no more turns left!');
         return;
     }
@@ -51,10 +57,9 @@ export function getResults() {
 }
 
 export function getSum() {
-    const results = getResults();
     let sum = 0;
-    for (let i = 0; i < 6; i++) {
-        sum += results[i];
+    for (let i = 0; i < finalResults.length; i++) {
+        sum += finalResults[i];
     }
     return sum;
 }
@@ -70,10 +75,9 @@ export function getBonus() {
 export function getTotal() {
     const sum = getSum();
     const bonus = getBonus();
-    const results = getResults();
     let total = sum + bonus;
-    for (let i = 6; i < results.length; i++) {
-        total += results[i];
+    for (let i = 6; i < finalResults.length; i++) {
+        total += finalResults[i];
     }
     return total;
 }
