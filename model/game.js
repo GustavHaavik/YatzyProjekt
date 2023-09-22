@@ -9,6 +9,10 @@ export function getAttempts() {
     return throwAttempts;
 }
 
+export function setValues(values){
+     dice = values;
+}
+
 export function resetThrowCounts() {
     throwAttempts = 0;
 }
