@@ -88,8 +88,6 @@ function newTurn() {
     diceImages.forEach((diceImage) => {
         diceImage.classList.remove('hold');
     });
-
-    yatzy.
 }
 
 // Add a click event listener to each result element
