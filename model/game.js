@@ -1,30 +1,31 @@
 const dice = [];
-let throwLeft = 3;
+let throwAttempts = 0;
 
 export function getDice() {
     return dice;
 }
 
-export function setDice(newDice) {
-    dice = newDice;
-}
-
-export function getThrowLeft() {
-    return throwLeft;
+export function getAttempts() {
+    return throwAttempts;
 }
 
 export function resetThrowCounts() {
-    throwLeft = 0;
+    throwAttempts = 0;
 }
 
 export function rollDice(holding) {
+    if (throwAttempts === 3) {
+        alert('You have no more turns left!');
+        return;
+    }
+
     for (let i = 0; i < 5; i++) {
         if (!holding[i]) {
             dice[i] = Math.floor(Math.random() * 6) + 1;
         }
     }
 
-    throwLeft--;
+    throwAttempts++;
 }
 
 export function getResults() {
@@ -36,21 +37,47 @@ export function getResults() {
     results[7] = twoPairPoints();
     results[8] = threeOfAKindPoints();
     results[9] = fourOfAKindPoints();
-    results[10] = fullHousePoints();
-    results[11] = smallStraightPoints();
-    results[12] = largeStraightPoints();
+    results[10] = smallStraightPoints();
+    results[11] = largeStraightPoints();
+    results[12] = fullHousePoints();
     results[13] = chancePoints();
     results[14] = yatzyPoints();
 
     return results;
 }
 
+export function getSum() {
+    const results = getResults();
+    let sum = 0;
+    for (let i = 0; i < 6; i++) {
+        sum += results[i];
+    }
+    return sum;
+}
+
+export function getBonus() {
+    const sum = getSum();
+    if (sum >= 63) {
+        return 50;
+    }
+    return 0;
+}
+
+export function getTotal() {
+    const sum = getSum();
+    const bonus = getBonus();
+    const results = getResults();
+    let total = sum + bonus;
+    for (let i = 6; i < results.length; i++) {
+        total += results[i];
+    }
+    return total;
+}
+
 
 function sameValuePoints(value) {
-    const counts = calculateCounts
-    return counts[value] * value;
-
-
+    const counts = calculateCounts();
+    return counts[value - 1] * value;
 }
 
 function calculateCounts() {
@@ -58,6 +85,7 @@ function calculateCounts() {
     for (let value of dice) {
         counts[value - 1]++;
     }
+
     return counts;
 }
 
@@ -70,6 +98,8 @@ function getPairs() {
             pairs.push(i + 1);
         }
     }
+
+    return pairs;
 }
 
 
@@ -115,23 +145,24 @@ function fourOfAKindPoints() {
 
 function fullHousePoints() {
     const counts = calculateCounts();
-    let indexOfBiggestPair = 0;
-    let indexOfBiggestThree = 0;
-
+    let pair = false;
+    let threeOfAKind = false;
     for (let i = 0; i < counts.length; i++) {
-        if (counts[i] >= 2 && i > indexOfBiggestPair) {
-            indexOfBiggestPair = i;
+        if (counts[i] === 2) {
+            pair = true;
         }
-        if (counts[i] >= 3 && i > indexOfBiggestThree) {
-            indexOfBiggestThree = i;
+        if (counts[i] === 3) {
+            threeOfAKind = true;
         }
     }
 
-    let points = 0;
-    if (indexOfBiggestPair !== 0 && indexOfBiggestThree !== 0) {
-        points = (indexOfBiggestPair) * 2 + (indexOfBiggestThree) * 3;
+    let sum = 0;
+    if (pair && threeOfAKind) {
+        for(let i = 0; i < counts.length; i++) {
+            sum += (i + 1) * counts[i];
+        }
     }
-    return points;
+    return sum;
 }
 
 function isStraight(start, end) {
@@ -159,12 +190,9 @@ function largeStraightPoints() {
     return 0;
 }
 
-
 function chancePoints() {
     return dice.reduce((a, b) => a + b, 0);
 }
-
-
 
 function yatzyPoints() {
     const counts = calculateCounts();
