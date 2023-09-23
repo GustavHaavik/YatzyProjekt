@@ -1,10 +1,10 @@
 let dice = [];
 let throwAttempts = 0;
 const MAX_ATTEMPTS = 3;
-const finalResults = [];
+const finalResults = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
-export function pushResult(value) {
-    finalResults.push(value);
+export function pushResult(index, value) {
+    finalResults[index] = value;
 }
 
 export function getDice() {
@@ -15,8 +15,8 @@ export function getAttempts() {
     return throwAttempts;
 }
 
-export function setValues(values){
-     dice = values;
+export function setValues(values) {
+    dice = values;
 }
 
 export function resetThrowCounts() {
@@ -64,11 +64,12 @@ export function getSum() {
     return sum;
 }
 
-// Vi godt ved at totalsum skal være 63 eller over 
-// på øverste del af spillepladen for at få bonus.
-// Denne metode er derfor forkert.
 export function getBonus() {
-    const sum = getSum();
+    let sum = 0;
+    for (let i = 0; i < 6; i++) {
+        sum += finalResults[i];
+    }
+
     if (sum >= 63) {
         return 50;
     }
@@ -79,9 +80,7 @@ export function getTotal() {
     const sum = getSum();
     const bonus = getBonus();
     let total = sum + bonus;
-    for (let i = 6; i < finalResults.length; i++) {
-        total += finalResults[i];
-    }
+
     return total;
 }
 

@@ -15,13 +15,13 @@ diceImages.forEach((diceImage) => {
     diceImage.addEventListener('click', toggleHold);
 });
 
-scoreElements.forEach((resultElement) => {
+scoreElements.forEach((resultElement, index) => {
     resultElement.addEventListener('click', () => {
         if (!isScorable(resultElement)) return;
 
         lockScore(resultElement);
         const scoreValue = parseInt(resultElement.querySelector('.result').textContent);
-        yatzy.pushResult(scoreValue);
+        yatzy.pushResult(index, scoreValue);
 
         updateScore();
         newTurn();
