@@ -64,6 +64,9 @@ export function getSum() {
     return sum;
 }
 
+// Vi godt ved at totalsum skal være 63 eller over 
+// på øverste del af spillepladen for at få bonus.
+// Denne metode er derfor forkert.
 export function getBonus() {
     const sum = getSum();
     if (sum >= 63) {
